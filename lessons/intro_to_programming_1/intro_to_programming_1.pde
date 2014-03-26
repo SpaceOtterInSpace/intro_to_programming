@@ -1,4 +1,4 @@
-//Jacqui's Code
+//Jacqui's Code,
 
 Planet earth;
 Planet sun;
