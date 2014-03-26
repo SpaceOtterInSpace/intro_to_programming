@@ -34,11 +34,20 @@ public class Planet{
   }
 
   void checkEdgeBounce() {
-    if (  ) // needs to call some function...
+        if (  isCollidingX(width,0)) 
       dx *= -1;
-    if (  ) // needs to call some function...
+    if ( isCollidingY(height, 0) ) 
       dy *= -1;
   }
+  
+  /* create a new function with the inputs being the x,y of the planets
+  if ((sun.y - earth.y)^2 + (sun.x - earth.x)^2)^0.5 is less than the sun.mysize/2 + earth.mysize/2 then
+    sun.dx *= -1
+    sun.dy *+ -1
+    earth.dx *= -1
+    earth.dy *= -1
+  I'm still working on a for loop that will cyle through all the planets including the meteors
+  */
   
   void drawPlanet(){
     fill(myColor);
@@ -71,7 +80,7 @@ public class Meteor extends Planet {
       fill(myColor);
       loc[0] = mouseX;
       loc[1] = mouseY;
-      ellipse(loc[0], loc[1], mySize, mySize);
+      text("Mooo", loc[0], loc[1]);//I just changed this to see what would happen and decided to leave it
     }
     else{
       super.drawPlanet();
