@@ -40,19 +40,25 @@ public class Planet{
       dy *= -1;
   }
   
-  /* create a new function with the inputs being the x,y of the planets
-  if ((sun.y - earth.y)^2 + (sun.x - earth.x)^2)^0.5 is less than the sun.mysize/2 + earth.mysize/2 then
-    sun.dx *= -1
-    sun.dy *+ -1
-    earth.dx *= -1
-    earth.dy *= -1
-  I'm still working on a for loop that will cyle through all the planets including the meteors
-  */
+  //create a new function with the inputs being the x,y of the planets
+  void checkPlanetBounce() {
+  if (pow(pow(sun.loc[1] - earth.loc[1],2) + pow(sun.loc[0] - earth.loc[0],2),0.5) < sun.mySize/2 + earth.mySize/2) 
+    sun.dx *= -1;
+    //sun.dy *= -1;
+    earth.dx *= -1;
+    //earth.dy *= -1;
+  }
+  //I'm still working on a for loop that will cyle through all the planets including the meteors
+  
   
   void drawPlanet(){
     fill(myColor);
     ellipse(loc[0], loc[1], mySize, mySize);
     checkEdgeBounce();
+    checkPlanetBounce();
+    /*for(met:mets){
+      if(isColliding*/
+      
     loc[0] += dx;
     loc[1] += dy;
     
@@ -67,7 +73,7 @@ public class Meteor extends Planet {
     super();
     println("actually im a meteor");
     
-    myColor = color( random(255), random(255), random(255) );
+    myColor = color( random(255), random(255), random(255),80 );
     
     dx = (int) random(3, 17);
     dy = (int) random(3, 17);

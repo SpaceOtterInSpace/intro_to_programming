@@ -8,7 +8,7 @@ ArrayList<Meteor> mets;
 void setup() {
   size(600, 600);
   frameRate(25);
-  background(0);
+  background(255);
   earth = new Planet();
   earth.name = "Earth";
   earth.myColor = color(0, 0, 255);
@@ -24,10 +24,10 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  background(255);
 
-  sun.drawPlanet();
-  earth.drawPlanet();
+  sun.drawPlanet();// give it mets as a parameter
+  earth.drawPlanet();//same comment as above
 
   for ( Meteor met : mets) {
     met.drawPlanet();
