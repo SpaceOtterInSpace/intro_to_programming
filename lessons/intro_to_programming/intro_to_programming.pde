@@ -28,9 +28,22 @@ void draw() {
 
   sun.drawPlanet();// give it mets as a parameter
   earth.drawPlanet();//same comment as above
+  earth.checkPlanetBounce(sun);
+  
 
   for ( Meteor met : mets) {
     met.drawPlanet();
+    
+      //create a new function with the inputs being the x,y of the planets
+  met.checkPlanetBounce(sun);
+  met.checkPlanetBounce(earth);
+  for(Meteor othermet: mets){
+  if(met != othermet){
+  met.checkPlanetBounce(othermet);
+  }
+  }
+  
+
   }
 }
 

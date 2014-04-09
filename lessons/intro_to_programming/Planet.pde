@@ -1,24 +1,26 @@
 public class Planet{
-  int[] loc;
+  float[] loc;
   color myColor;
-  int mySize;
-  int dx, dy;
+  float mySize;
+  float dx, dy;
   String name;
+
   
   public Planet(){
     println("making an planet");
-    loc = new int[2];
+    loc = new float[2];
     assignDefaultValues();
   }
   
   void assignDefaultValues(){
     println("assigning values");
     name = "a planet";
-    loc[0] = 100;
-    loc[1] = 200;
+    loc[0] = random(100,500);
+    loc[1] = random(100,500);
     myColor = color(255,255,0);
     mySize = 50;
     dx = dy = 10;
+    
   }
   
   boolean isCollidingX(int x0, int x1) {
@@ -41,21 +43,28 @@ public class Planet{
   }
   
   //create a new function with the inputs being the x,y of the planets
-  void checkPlanetBounce() {
-  if (pow(pow(sun.loc[1] - earth.loc[1],2) + pow(sun.loc[0] - earth.loc[0],2),0.5) < sun.mySize/2 + earth.mySize/2) 
-    sun.dx *= -1;
-    //sun.dy *= -1;
-    earth.dx *= -1;
+  void checkPlanetBounce(Planet planet) {
+    float a, b, c;
+    a = planet.loc[0] - loc[0];
+    b = planet.loc[1] - loc[1];
+    c = sqrt(pow(a,2) + pow(b,2));
+  if (c < mySize/2 + planet.mySize/2){
+    dx *= -1;
+    dy *= -1;
+    planet.dx *= -1;
+    planet.dy *= -1;
+    println("a"+a+"   b"+b+"   c"+c);
+    //earth.dx *= -1;
     //earth.dy *= -1;
   }
+  }
   //I'm still working on a for loop that will cyle through all the planets including the meteors
-  
+ 
   
   void drawPlanet(){
     fill(myColor);
     ellipse(loc[0], loc[1], mySize, mySize);
     checkEdgeBounce();
-    checkPlanetBounce();
     /*for(met:mets){
       if(isColliding*/
       
@@ -75,8 +84,8 @@ public class Meteor extends Planet {
     
     myColor = color( random(255), random(255), random(255),80 );
     
-    dx = (int) random(3, 17);
-    dy = (int) random(3, 17);
+    dx = (int) 10;//random(3, 17);
+    dy = (int) 10;//random(3, 17);
     
     followMouse = false;
   }
