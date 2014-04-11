@@ -1,20 +1,18 @@
+
+WritingUtensil my_utensil;
+
 void setup(){
   size(600,600,P3D);
+  frameRate(25);
+  my_utensil = new WritingUtensil();
+  my_utensil.my_color = color(100,200,255);
+  my_utensil.location = new PVector(width/2,height/2,100);
+  my_utensil.orientation = new PVector(PI/5,0,0);
+  background(100);
 }
 
 void draw(){
-  background(#C26CCE);
-  noFill();
-  text("i will making a writing utensil!",100,100);
-  //fill(0,69,90);
-  text("I can't find the updog",300,304);
-  //stroke(0);
-  
-
-  translate(width/2, height/2, 200);
-  rotateY(PI/5);
-  rotateX(PI/9);
-  box(10,20,20);
-  //myWritingUtensil.write()
-
+  background(100);
+  my_utensil.spin(new PVector(PI/100,0,PI/100));
+  my_utensil.render(true);
 }
