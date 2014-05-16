@@ -15,4 +15,30 @@ void draw(){
   background(100);
   my_utensil.spin(new PVector(PI/100,0,PI/100));
   my_utensil.render(true);
+  //my_utensil.location = new PVector(mouseX,mouseY,100);
 }
+
+/*void keyPressed() {
+  if ( key == 'd' ){
+    if ( !mets.isEmpty() ) {
+      mets.remove(0);
+    }
+  } else if ( key == 'f' ) {
+    for ( int i = 0; i < mets.size(); i++) {
+      Meteor met = (Meteor) mets.get(i);
+      if ( !met.followMouse ){
+        met.followMouse = true;
+        break;
+      }
+    }
+  } else if ( key == 's' ) {
+    for ( int i = 0; i < mets.size(); i++) {
+      Meteor met = (Meteor) mets.get(i);
+      if ( met.followMouse ){
+        met.followMouse = false;
+        break;
+      }
+    }
+  }
+}
+*/

@@ -15,11 +15,11 @@ public class Planet{
   void assignDefaultValues(){
     println("assigning values");
     name = "a planet";
-    loc[0] = random(100,500);
-    loc[1] = random(100,500);
-    myColor = color(255,255,0);
-    mySize = 50;
-    dx = dy = 10;
+    loc[0] = random(100,width-100);
+    loc[1] = random(100,width-100);
+    //myColor = color(255,255,0);
+    mySize = random(10,100);
+    dx = dy = random(-5,5);
     
   }
   
@@ -58,12 +58,14 @@ public class Planet{
     //earth.dy *= -1;
   }
   }
-  //I'm still working on a for loop that will cyle through all the planets including the meteors
+
  
   
   void drawPlanet(){
     fill(myColor);
-    ellipse(loc[0], loc[1], mySize, mySize);
+    otters = loadImage("otter_space.png");
+    image(otters,loc[0],loc[1],mySize,mySize);
+    //ellipse(loc[0], loc[1], mySize, mySize);
     checkEdgeBounce();
     /*for(met:mets){
       if(isColliding*/
@@ -74,6 +76,14 @@ public class Planet{
   }
 }
 
+public class Otters extends Planet{
+  void drawPlanet(){
+    otters = loadImage("otter_space.png");
+    image(otters,loc[0],loc[1],100,100);
+  }
+}
+  
+
 public class Meteor extends Planet {
   
   boolean followMouse;
@@ -82,20 +92,22 @@ public class Meteor extends Planet {
     super();
     println("actually im a meteor");
     
-    myColor = color( random(255), random(255), random(255),80 );
+    //myColor = color( random(255), random(255), random(255),80 );
     
-    dx = (int) 10;//random(3, 17);
-    dy = (int) 10;//random(3, 17);
+    dx = (int) 1;//random(3, 17);
+    dy = (int) 1;//random(3, 17);
     
     followMouse = false;
   }
   
   void drawPlanet(){
     if ( followMouse ) {
-      fill(myColor);
+      //fill(myColor);
       loc[0] = mouseX;
       loc[1] = mouseY;
-      text("Mooo", loc[0], loc[1]);//I just changed this to see what would happen and decided to leave it
+      otters = loadImage("otter_space.png");
+      image(otters,loc[0],loc[1],50,50);
+      //text("Mooo", loc[0], loc[1]);//I just changed this to see what would happen and decided to leave it
     }
     else{
       super.drawPlanet();

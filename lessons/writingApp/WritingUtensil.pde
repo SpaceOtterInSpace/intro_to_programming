@@ -73,6 +73,7 @@ public class WritingUtensil {
   void render() {
     pushMatrix();
     noStroke();
+    //stroke(255);
     // move to where the utensil is
     translate(location.x, location.y, location.z);
     // rotate to the orientation vectors
